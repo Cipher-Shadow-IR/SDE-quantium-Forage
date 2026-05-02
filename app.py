@@ -7,7 +7,7 @@ dash_app = Dash(__name__)
 
 dash_app.title = "Soul Foods Data Viz"
 
-df = pd.read_csv('data\processedDF2')
+df = pd.read_csv('data/processedDF2')
 
 fig = px.line(df, x="date", y="sales")
 
@@ -24,7 +24,7 @@ dash_app.layout = html.Div(style={'padding': 10}, children=[
     html.Div([
       html.Label('Choose the region : '),
       html.Br(),
-      dcc.RadioItems([{'label': 'Noth', 'value': 'north'}, {'label': 'South', 'value': 'south'},
+      dcc.RadioItems([{'label': 'North', 'value': 'north'}, {'label': 'South', 'value': 'south'},
       {'label': 'East', 'value': 'east'}, {'label': 'West', 'value': 'west'}], 'north', id='region', inline=True),
     ], style={'display': 'flex', 'textAlign': 'center', 'font-family':'sans-serif', 'alignItems': 'center', 'justifyContent': 'center', 'margin': '10px'}),
 
@@ -46,4 +46,4 @@ def update_graph(region):
     return fig
 
 if __name__ == '__main__':
-    dash_app.run_server(debug=True)
+    dash_app.run(debug=True)
